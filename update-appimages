@@ -1,0 +1,56 @@
+#!/bin/bash
+tmpDir=/tmp/update-appimages
+if ! mkdir -p $tmpDir; then
+  echo "Cannot create temprary directory to work in!"
+  echo "Quitting..."
+  exit 1
+fi
+cd $tmpDir
+
+bold=$(tput bold)
+underlined=$(tput smul)
+normal=$(tput sgr0)
+declare -a appFiles appNames baseNames
+
+i=1
+for appimage in /mnt/Data/Apps+/Linux/AppImages/{*,installed/*}; do
+  if [ -f "$appimage" ]; then
+    baseName="$(basename "$appimage")"
+    baseName="${baseName%.[aA][pP][pP][iI][mM][aA][gG][eE]}"
+    baseNames[$i]="$baseName"
+    appFiles[$i]="$appimage"
+    desktopFile="$("$appimage" --appimage-extract '*.desktop' 2>/dev/null)"
+    if [ -n "$desktopFile" ]; then
+      while file -bi "$desktopFile" | grep 'inode/symlink' &>/dev/null; do
+        desktopFile="$(file "$desktopFile" | rev | cut -d " " -f 1 | rev)"
+        desktopFile="$("$appimage" --appimage-extract "$desktopFile")"
+      done
+      appNames[$i]="$(grep -E '^Name=' "$desktopFile" | sed 's|Name=||')"
+    else
+      appNames[$i]="Unknown"
+    fi
+    printf "%2s: %s (%s)\n" $i "${appNames[$i]}" "${baseNames[$i]}"
+    ((i++))
+  fi
+done
+
+echo "Enter space separated numbers of AppImages to update, or the word 'all' to update all AppImages"
+echo -n "Your Choice: "
+echo all | read choices
+echo all
+choices=all
+
+if [ "$choices" = 'all' ]; then
+  for ((j=1;j<i;j++)); do
+    echo "Trying to Update '$bold${appNames[$j]}$normal' ("$underlined${baseNames[$j]}$normal") ..."
+    /mnt/Data/Apps+/Linux/AppImages/appimageupdatetool-x86_64.AppImage -r "${appFiles[$j]}"
+    echo
+  done
+elif [ -n "$choices" ]; then
+  for choice in $choices; do
+    echo "Trying to Update '$bold${appNames[$choice]}$normal' ("$underlined${baseNames[$choice]}$normal") ..."
+    /mnt/Data/Apps+/Linux/AppImages/appimageupdatetool-x86_64.AppImage -r "${appFiles[$choice]}"
+    echo
+  done
+fi
+rm -r $tmpDir

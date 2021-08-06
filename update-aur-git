@@ -1,0 +1,17 @@
+#!/bin/bash
+gitDir=~/gitapps
+if [ -n "$1" ]; then
+  if echo "$1" | grep -E '\-git$' > /dev/null; then
+    cd "$gitDir/$1"
+  elif [ -d "$gitDir/$1-git" ]; then
+    cd "$gitDir/$1-git"
+  fi
+elif ! (pwd | grep -E '/home/mazhar/gitapps/.*-git$' > /dev/null); then
+  exit 1
+fi
+makepkg
+makepkg --printsrcinfo > .SRCINFO
+rm -rf src pkg "$(basename "$(pwd)")"*
+git add PKGBUILD .SRCINFO
+git commit -m "update to the latest version"
+git push
