@@ -1,6 +1,6 @@
 #!/bin/bash
-tmpDir=/tmp/update-appimages
-if ! mkdir -p $tmpDir; then
+
+if ! tmpDir="$(mktemp -d 2>/dev/null)"; then
   echo "Cannot create temprary directory to work in!"
   echo "Quitting..."
   exit 1
