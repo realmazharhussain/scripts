@@ -2,7 +2,7 @@
 
 A collection of bash/fish/py scripts for my personal use. Maybe, you'll find something useful here, or, maybe not.
 
-### edit-gdm-custom.css
+### edit-gdm-custom-css
 
 Edit `/etc/gdm-tools/custom.css` file and then 
 
