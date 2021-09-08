@@ -1,0 +1,26 @@
+#!/bin/bash
+
+if type doas &>/dev/null; then
+   sudo=doas
+else
+   sudo=sudo
+fi
+
+if [[ -v EDITOR ]]; then
+   editor=$EDITOR
+elif type nano &>/dev/null; then
+   editor=nano
+elif type vim &>/dev/null; then
+   editor=vim
+else
+   editor=vi
+fi
+
+if $sudo $editor /etc/gdm-tools/custom.css; then
+   set-gdm-theme set --background
+   /usr/share/libalpm/scripts/extract-gdm-theme
+   if [ $(gsettings get org.gnome.shell.extensions.user-theme name 2>/dev/null) = 'default-extracted' ]; then
+      gsettings set org.gnome.shell.extensions.user-theme name ''
+      gsettings set org.gnome.shell.extensions.user-theme name 'default-extracted'
+   fi 
+fi
