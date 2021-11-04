@@ -1,0 +1,13 @@
+#!/bin/bash
+is_number()
+{
+   for value in "$@"
+   do
+      test "$value" -gt 0 &> /dev/null
+      if [ $? -eq 2 ]
+      then
+         exit 1
+      fi
+   done
+}
+is_number "$@"
