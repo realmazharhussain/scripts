@@ -2,6 +2,15 @@
 
 A collection of bash/fish/py scripts for my personal use. Maybe, you'll find something useful here, or, maybe not.
 
+### battery-health.sh
+
+Shows the ratio (in percentage) between Battery's maximum charge capacity now and Battery's maximum charge capacity when it was new
+
+### clean-with-gitignore.sh
+
+Clean current working directory (delete files in it) according to the list found in `.gitignore` file in the current working directory
+**Note:** May not work with complex `.gitignore` files
+
 ### edit-gdm-custom-css
 
 Edit `/etc/gdm-tools/custom.css` file and then 
@@ -17,6 +26,10 @@ Edit `/etc/gdm-tools/custom.css` file and then
 
 Alternative to the fish command `fish_config prompt show`. I wrote it when I didn't know `fish_config` command could do the same thing.
 
+### git-version.sh
+
+Make a version number for currently open git repository
+
 ### gitapps-status.fish
 
 Print `fish_prompt` and `git status` for each git repository in `~/gitapps/` directory.
@@ -26,6 +39,11 @@ Print `fish_prompt` and `git status` for each git repository in `~/gitapps/` dir
 `icon-names.sh subdir querry` searches for a sub-folder named `subdir` in all icon themes installed on `/usr/share/icons` for all files that contain the word `querry`.
 
 That is, running `icon-names.sh mimetypes appimage` will list all mimetypes containing the word `appimage`  (ignoring the extension) which have an icon installed on the system.
+
+### is-number
+
+Check if provided arguments are numbers or not
+**Example Usage:** `if is-number $1; then echo $1 is a number; fi`
 
 ### update-appimages
 
