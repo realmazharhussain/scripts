@@ -22,7 +22,7 @@ Edit `/etc/gdm-tools/custom.css` file and then
 
 **Depends on:** [gdm-tools](https://github.com/realmazharhussain/gdm-tools.git), sudo or doas, gsettings, nano or vim or vi,  `/usr/share/libalpm/scripts/extract-gdm-theme`
 
-### fish_prompts.fish
+### fish-prompts.fish
 
 Alternative to the fish command `fish_config prompt show`. I wrote it when I didn't know `fish_config` command could do the same thing.
 
