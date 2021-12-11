@@ -6,6 +6,10 @@ A collection of bash/fish/py scripts for my personal use. Maybe, you'll find som
 
 Shows the ratio (in percentage) between Battery's maximum charge capacity now and Battery's maximum charge capacity when it was new
 
+### battery-percentage.h
+
+Shows how much battery is charged (in percentage)
+
 ### clean-with-gitignore.sh
 
 Clean current working directory (delete files in it) according to the list found in `.gitignore` file in the current working directory
