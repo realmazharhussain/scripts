@@ -67,3 +67,7 @@ Update my `*-git` AUR package (determined by `$PWD` or first argument ) to the l
 
 Create/update a GNOME-style dynamic background from the pictures in `~/Pictures/Wallpapers` directory so that I get a different wallpaper everyday but from my collection instead of something on the Internet e.g. bing, reddit, etc.
 
+### zenity-sudo-askpass
+
+A graphical password dialog for sudo (using zenity)
+
