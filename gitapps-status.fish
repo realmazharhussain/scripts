@@ -22,9 +22,10 @@ for dir in ~/gitapps/foreign/* ~/gitapps/AUR/* ~/gitapps/*
   if [ -d $dir/.git ]
     cd $dir
     set git_status (git status)
+    set git_status_short (git status -s)
     if string match -q 'Your branch is ahead*' $git_status[2]
     or string match -q 'Your branch is behind*' $git_status[2]
-    or test (git status -s)
+    or test -n "$git_status_short"
       if $first
         set first false
       else
