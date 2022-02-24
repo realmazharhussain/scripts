@@ -59,7 +59,7 @@ Use `/mnt/Data/Apps+/Linux/AppImages/appimageupdatetool-x86_64.AppImage` to upda
 
 **Note:** `/mnt/Data` is mount-point of my `Data` partition.
 
-### update-aur-git
+### update-aur-pkg
 
 Update my `*-git` AUR package (determined by `$PWD` or first argument ) to the latest version.
 
