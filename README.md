@@ -59,9 +59,13 @@ Use `/mnt/Data/Apps+/Linux/AppImages/appimageupdatetool-x86_64.AppImage` to upda
 
 **Note:** `/mnt/Data` is mount-point of my `Data` partition.
 
+### update-aur-git-pkgs
+
+Update all of my `*-git` AUR packages to the latest version.
+
 ### update-aur-pkg
 
-Update my `*-git` AUR package (determined by `$PWD` or first argument ) to the latest version.
+Update my AUR package (determined by `$PWD` or first argument ) to the latest version.
 
 ### update-dynamic-wallpaper.sh
 
