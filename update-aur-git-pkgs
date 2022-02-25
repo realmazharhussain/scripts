@@ -1,0 +1,5 @@
+#!/bin/bash
+scriptDir=$(dirname "$0")
+for dir in ~/gitapps/AUR/*-git; do
+  "$scriptDir"/update-aur-pkg "$(basename "$dir")"
+done
