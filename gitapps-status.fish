@@ -8,7 +8,7 @@ function print_info
     set_color normal
     set_color f00
     if string match -q AUR $dirname[1]
-      set_color bryellow
+      set_color fb0
     end
     echo " [$dirname[1]]"
   else
