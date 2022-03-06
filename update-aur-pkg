@@ -1,5 +1,5 @@
 #!/bin/bash
-aurGitDir=~/gitapps/AUR
+aurGitDir=/mnt/Data/gitapps/AUR
 if [ "$1" = --git ]; then
   repo_name=$(basename "$PWD")-git
 else

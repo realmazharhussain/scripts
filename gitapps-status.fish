@@ -1,7 +1,7 @@
 #!/bin/fish
 
 function print_info
-  set dirname (string replace ~/gitapps/ '' $argv[1] | string split /)
+  set dirname (string replace /mnt/Data/gitapps/ '' $argv[1] | string split /)
   set_color -o brcyan
   if test $dirname[2]
     echo -n $dirname[2]
@@ -18,7 +18,7 @@ function print_info
 end
 
 set first true
-for dir in ~/gitapps/foreign/* ~/gitapps/AUR/* ~/gitapps/*
+for dir in /mnt/Data/gitapps/foreign/* /mnt/Data/gitapps/AUR/* /mnt/Data/gitapps/*
   if [ -d $dir/.git ]
     cd $dir
     set git_status (git status)

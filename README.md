@@ -40,7 +40,7 @@ Make a version number for currently open git repository
 
 ### gitapps-status.fish
 
-Print `fish_prompt` and `git status` for each git repository in `~/gitapps/` directory.
+Print `fish_prompt` and `git status` for each git repository in `/mnt/Data/gitapps/` directory.
 
 ### icon-names.sh
 
