@@ -6,7 +6,7 @@ A collection of bash/fish/py scripts for my personal use. Maybe, you'll find som
 
 Shows the ratio (in percentage) between Battery's maximum charge capacity now and Battery's maximum charge capacity when it was new
 
-### battery-percentage.h
+### battery-percentage.sh
 
 Shows how much battery is charged (in percentage)
 
