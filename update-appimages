@@ -14,7 +14,7 @@ declare -a appFiles appNames baseNames
 
 i=1
 for appimage in /mnt/Data/Apps+/Linux/AppImages/{*,installed/*}; do
-  if [ -f "$appimage" ]; then
+  if [ "$(file --brief --mime-type "$appimage" 2>/dev/null)" = "application/x-executable" ]; then
     baseName="$(basename "$appimage")"
     baseName="${baseName%.[aA][pP][pP][iI][mM][aA][gG][eE]}"
     baseNames[$i]="$baseName"
