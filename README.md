@@ -34,6 +34,14 @@ Enable chaotic-aur repository on Arch-like/Arch-based distributions
 
 Alternative to the fish command `fish_config prompt show`. I wrote it when I didn't know `fish_config` command could do the same thing.
 
+### getints.py
+
+Get integers that represent the string provided as 1st argument.
+
+Usage: `getints.py <string> [size]`
+
+**Note:** `[size]` is optional and represents size of each int in bytes
+
 ### git-version.sh
 
 Make a version number for currently open git repository
