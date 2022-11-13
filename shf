@@ -1,0 +1,5 @@
+#!/bin/sh
+content=$(pacman -Ql "$@" 2>/dev/null) || content=$(pacman -Fl "$@")
+retval=$?
+test -n "$content" && { cut -d ' ' -f 2 | sed 's|^/*|/|' | less; } <<< "$content"
+exit $retval
