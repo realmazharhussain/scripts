@@ -4,17 +4,22 @@ shift
 branches=("$@")
 repo_name=${url##*/}
 repo_name=${repo_name%.git}
+repo_dir=${PWD}/${repo_name}
 
-git clone --depth=1 "$url"
+if test -n "$branches"; then
+  main_branch="${branches[0]}"
+  mkdir "$repo_dir"
+  cd "$repo_dir"
+  
+  git init
+  git remote add origin "$url" -t "$main_branch"
 
-cd "$repo_name"
+  "$(dirname $0)"/branch-grafted.sh "${branches[@]}"
 
-main_branch=$(git symbolic-ref --short HEAD)
+  if test ${#branches[@]} -gt 1; then
+    git switch "$main_branch"
+  fi
 
-for branch_name in "${branches[@]}"; do
-  git switch --orphan "$branch_name"
-  git remote set-branches --add origin "$branch_name"
-  git pull --depth=1 --set-upstream origin "$branch_name"
-done
-
-git switch "$main_branch"
+else
+  git clone --depth=1 "$url"
+fi
