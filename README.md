@@ -50,6 +50,10 @@ Make a version number for currently open git repository
 
 Print `fish_prompt` and `git status` for each git repository in `/mnt/Data/gitapps/` directory.
 
+### hexprint.py
+
+Print contents of files in hex format (and also in ASCII)
+
 ### icon-names.sh
 
 `icon-names.sh subdir querry` searches for a sub-folder named `subdir` in all icon themes installed on `/usr/share/icons` for all files that contain the word `querry`.
