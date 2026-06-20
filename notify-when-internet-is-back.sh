@@ -93,4 +93,4 @@ while ! ping -c 1 "$server" &>/dev/null; do
   sleep "$interval"
 done
 
-notify-send "$title" "$message"
+notify-send "$title" "$message" --hint "STRING:sound-name:complete"
