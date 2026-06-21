@@ -65,7 +65,7 @@ That is, running `icon-names.sh mimetypes appimage` will list all mimetypes cont
 Check if provided arguments are numbers or not
 **Example Usage:** `if is-number $1; then echo $1 is a number; fi`
 
-### list-touchscreens.py
+### touchscreens.py
 
 List and manipulate (e.g. disable, re-enable) touchscreen input
 
