@@ -65,6 +65,10 @@ That is, running `icon-names.sh mimetypes appimage` will list all mimetypes cont
 Check if provided arguments are numbers or not
 **Example Usage:** `if is-number $1; then echo $1 is a number; fi`
 
+### list-touchscreens.py
+
+List and manipulate (e.g. disable, re-enable) touchscreen input
+
 ### update-appimages
 
 Use `/mnt/Data/Apps+/Linux/AppImages/appimageupdatetool-x86_64.AppImage` to update all AppImages in `/mnt/Data/Apps+/Linux/AppImages` and `/mnt/Data/Apps+/Linux/AppImages/installed` directories.
