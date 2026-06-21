@@ -1,4 +1,18 @@
 #!/bin/bash
+
+XDG_PICTURES_DIR=$(xdg-user-dir PICTURES)
+
+if [[ -z $XDG_PICTURES_DIR ]]; then
+  echo "Could not detect PICTURES directory!" >&2
+  exit 1
+elif [[ ! -d "$XDG_PICTURES_DIR"/Wallpapers ]]; then
+  echo "PICTURES/Wallpapers directory does not exist!" >&2
+  exit 1
+elif [[ -z $(ls "$XDG_PICTURES_DIR"/Wallpapers) ]]; then
+  echo "There are no wallpapers to create a dynamic wallpaper out of" >&2
+  exit 1
+fi
+
 xmlFile=/usr/share/backgrounds/my-dynamic.xml
 
 echo "<background>
@@ -49,7 +63,7 @@ while read wallpaper; do
  </static>
 " | sudo tee -a "$xmlFile" > /dev/null
   fi
-done <<<$(ls -dtr1 $HOME/Pictures/Wallpapers/*)
+done <<<$(ls -dtr1 "$XDG_PICTURES_DIR"/Wallpapers/*)
 
 
 echo "</background>" | sudo tee -a "$xmlFile" > /dev/null
