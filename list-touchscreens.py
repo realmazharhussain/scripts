@@ -9,16 +9,17 @@ gi.require_version("GUdev", "1.0")
 from pathlib import Path
 from gi.repository import GUdev
 
+name = Path(sys.argv[0]).name
+
 def show_help():
-    name = Path(sys.argv[0]).name
     help = '\n'.join((
-        f"Usage: {name} [OPTION]",
+        f"Usage: {name} [COMMAND]",
         "",
-        "OPTIONS:",
-        "  -h,--help       Show this help message",
-        "  -l,--list       List available touchscreen devices",
-        "  -d,--disable    Disable all touchscreen devices",
-        "  -r,--reset      Reset touchscreen drivers (Re-enables all touchscreen devices)",
+        "COMMANDS:",
+        "  h,help       Show this help message",
+        "  l,list       List available touchscreen devices [default]",
+        "  d,disable    Disable all touchscreen devices",
+        "  r,reset      Reset touchscreen drivers (Re-enables all touchscreen devices)",
     ))
     print(help)
 
@@ -50,23 +51,47 @@ def reset_touchscreens():
     return res.returncode
 
 def main():
+#    if len(sys.argv) > 2:
+#        print("Unrecognized arguments!")
+#        print(f"Run `{name} help` for usage information")
+#        return 1
+#    elif len(sys.argv) == 1 or 'list'.startswith(sys.argv[1]):
+#        print_touchscreens()
+#    elif 'disable'.startswith(sys.argv[1]):
+#        return disable_touchscreens()
+#    elif 'reset'.startswith(sys.argv[1]):
+#        return reset_touchscreens()
+#    elif 'help'.startswith(sys.argv[1]) or sys.argv[1] in ('-h', '--help'):
+#        show_help()
+#    else:
+#        print("Unknown argument:", sys.argv[1])
+#        print(f"Run `{name} help` for usage information")
+#        return 1
+#
+#    return 0
+
     if len(sys.argv) > 2:
-        show_help()
-        return
+        print("Too many arguments!")
+        print(f"Run `{name} help` for usage information")
+        return 1
 
     if len(sys.argv) == 1:
         print_touchscreens()
         return
 
     match sys.argv[1]:
-        case '-l' | '--list':
+        case x if 'list'.startswith(x):
             print_touchscreens()
-        case '-d' | '--disable':
+        case x if 'disable'.startswith(x):
             return disable_touchscreens()
-        case '-r' | '--reseet':
+        case x if 'reset'.startswith(x):
             return reset_touchscreens()
-        case _:
+        case x if 'help'.startswith(x) or x in ('-h', '--help'):
             show_help()
+        case x:
+            print("Unknown argument:", x)
+            print(f"Run `{name} help` for usage information")
+            return 1
 
 if __name__ == '__main__':
     sys.exit(main())
