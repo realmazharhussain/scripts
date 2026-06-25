@@ -18,8 +18,8 @@ xmlFile=/usr/share/backgrounds/my-dynamic.xml
 echo "<background>
  <starttime>
   <year>2021</year>
-  <month>8</month>
-  <day>6</day>
+  <month>9</month>
+  <day>5</day>
   <hour>0</hour>
   <minute>0</minute>
   <second>0</second>
