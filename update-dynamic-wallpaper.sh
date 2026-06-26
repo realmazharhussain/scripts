@@ -20,7 +20,7 @@ echo "<background>
   <year>2021</year>
   <month>9</month>
   <day>5</day>
-  <hour>0</hour>
+  <hour>7</hour>
   <minute>0</minute>
   <second>0</second>
  </starttime>
